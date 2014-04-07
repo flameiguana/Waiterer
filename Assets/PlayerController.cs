@@ -5,7 +5,12 @@ public class PlayerController : MonoBehaviour {
     
     public float speed = 20;
     public float hopDistance = 0.58f;
+    public GameObject waiterPrefab;
+    public Transform startPoint;
+    
+    private bool destroyed = false;
     private int score = 0;
+    
     private float lastHeightReached;
     
     private Vector2 targetPosition;
@@ -20,6 +25,7 @@ public class PlayerController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        Debug.Log("in update");
         if(!hopping){ // If 
             if(Input.GetKeyDown(KeyCode.W)){
                 targetPosition.y = transform.position.y + hopDistance;
@@ -33,6 +39,12 @@ public class PlayerController : MonoBehaviour {
             }else if (Input.GetKeyDown(KeyCode.D)){
                 targetPosition.x = transform.position.x + hopDistance;
                 hopping = true;
+            }
+            // check if target is out of bounds
+            if(( Mathf.Abs(targetPosition.x) > 4) || (targetPosition.y < -4)){
+                //reset the target and don't hop
+                targetPosition = transform.position;
+                hopping = false;
             }
         } else {
             // if hopping, then transition to the target location
@@ -53,5 +65,20 @@ public class PlayerController : MonoBehaviour {
 	}
     void FixedUpdate() {
         
+    }
+    // Check for any collisions
+     void OnTriggerEnter2D(Collider2D other) {
+        if (other.gameObject.tag == "Finish" && !destroyed){ //create a new waiter at the starting point
+            hopping = false;
+            GameObject newWaiterer = (GameObject)Instantiate(waiterPrefab, transform.position, transform.rotation);
+            transform.position = startPoint.position;
+            targetPosition = transform.position;
+            lastHeightReached = transform.position.y;
+        }else if (other.gameObject.tag == "Obstacle"){
+            hopping = false;
+            transform.position = startPoint.position;
+            targetPosition = transform.position;
+            lastHeightReached = transform.position.y;
+        }
     }
 }
