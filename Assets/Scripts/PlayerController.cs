@@ -8,7 +8,11 @@ public class PlayerController : MonoBehaviour {
     public GameObject waiterPrefab;
     public Transform startPoint;
     
-    private bool destroyed = false;
+    public int lives = 3;
+    public int drinksDelivered = 0;
+    public bool gameOver = false;
+    public bool levelComplete = false;
+    
     private int score = 0;
     
     private float lastHeightReached;
@@ -16,6 +20,10 @@ public class PlayerController : MonoBehaviour {
     private Vector2 targetPosition;
     
     private bool hopping = false;
+    
+    //Placeholder UI
+    public GUIStyle textStyle;
+    public GUIStyle resultTextStyle;
     
 	// Use this for initialization
 	void Start () {
@@ -63,22 +71,44 @@ public class PlayerController : MonoBehaviour {
             }
         }
 	}
+    
+    public void OnGUI() { 
+        GUI.Label(new Rect(Screen.width/4 + 10, 5, 20, 10), "Lives = "+lives, textStyle);
+        GUI.Label(new Rect(Screen.width/4 + 10, 25, 20, 10), "Score = "+score, textStyle);
+        if (gameOver){
+            GUI.Label(new Rect(Screen.width/3, Screen.height/2, 20, 10), "YOU SUCK", resultTextStyle);
+        }else if(levelComplete){
+            GUI.Label(new Rect(Screen.width/3, Screen.height/2, 20, 10), "U DA BESSSSSSSSSSS", resultTextStyle);
+        }
+    }
+    
     void FixedUpdate() {
         
     }
     // Check for any collisions
      void OnTriggerEnter2D(Collider2D other) {
-        if (other.gameObject.tag == "Finish" && !destroyed){ //create a new waiter at the starting point
-            hopping = false;
+        if (other.gameObject.tag == "Finish"){ //create a new waiter at the starting point
             GameObject newWaiterer = (GameObject)Instantiate(waiterPrefab, transform.position, transform.rotation);
-            transform.position = startPoint.position;
-            targetPosition = transform.position;
-            lastHeightReached = transform.position.y;
+            resetWaiter();
+            drinksDelivered++;
+            score += 100;
+            if(drinksDelivered == 5){
+                //score += secondsLeft;
+                levelComplete = true;
+            }
+            
         }else if (other.gameObject.tag == "Obstacle"){
-            hopping = false;
-            transform.position = startPoint.position;
-            targetPosition = transform.position;
-            lastHeightReached = transform.position.y;
+            resetWaiter();
+            lives--;
+            if(lives == 0){
+                gameOver = true;
+            }
         }
+    }
+    public void resetWaiter(){
+        hopping = false;
+        transform.position = startPoint.position;
+        targetPosition = transform.position;
+        lastHeightReached = transform.position.y;
     }
 }
