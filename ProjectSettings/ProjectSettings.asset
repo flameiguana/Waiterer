@@ -14,8 +14,8 @@ PlayerSettings:
   productName: Waiterer
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
-  defaultScreenWidth: 448
-  defaultScreenHeight: 512
+  defaultScreenWidth: 560
+  defaultScreenHeight: 640
   defaultScreenWidthWeb: 448
   defaultScreenHeightWeb: 512
   m_RenderingPath: 1

@@ -4,7 +4,7 @@ using System.Collections;
 public class PlayerController : MonoBehaviour {
     
     public float speed = 20;
-    public float hopDistance = 0.58f;
+    public float hopDistance = 0.4f;
     public GameObject waiterPrefab;
     public Transform startPoint;
     
