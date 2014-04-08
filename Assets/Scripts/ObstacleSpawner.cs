@@ -1,38 +1,97 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class ObstacleSpawner : MonoBehaviour {
 
 	public GameObject unit;
+	int ROWS = 12;
 
-	struct ObstacleInfo{
+
+	public GameObject stripPrefab;
+
+
+
+	class ObstacleInfo{
 		public int row;
-		public bool leftSide;
-		public float desiredSpeed;
-		public float spawnDelay;
+		public bool leftSide = true;
+		public float desiredSpeed = 5f;
+		public float spawnDelay = 5f;
 		public GameObject obstaclePrefab;
+
+		public float timeLeft;
+
+		public ObstacleInfo(GameObject obstaclePrefab, int row){
+			this.obstaclePrefab = obstaclePrefab;
+			this.row = row;
+			timeLeft = 0f;
+		}
+
+		public void TickTimer(float timePassed){
+			timeLeft -= timePassed;
+		}
+
+		public void ResetTimer(){
+			timeLeft = spawnDelay;
+		}
 	}
 
-	float[] rowYPositions;
+	List<ObstacleInfo> obstacleInfoList;
 
+	float[] rowYPositions;
+	float leftXPosition = -3.2f;
+	float rightXPosition = 3.2f;
+
+
+	void Awake(){
+		rowYPositions = new float[ROWS];
+		obstacleInfoList = new List<ObstacleInfo>();
+	}
 
 	// Use this for initialization
 	void Start () {
 		float bottomRowY = transform.position.y;
 		float unitLength = unit.gameObject.renderer.bounds.size.y;
-		print (unitLength);
-		float height = Camera.main.orthographicSize * 2;
+		//print (unitLength);
+
 		//Test generation of rows.
-		for(int i = 0; i < 10; i++){
+		for(int i = 0; i < ROWS; i++){
 			float yPosition = bottomRowY + (i * unitLength);
-			Vector3 position = new Vector3(transform.position.x, yPosition);
-			Instantiate(unit, position, Quaternion.identity);
+			rowYPositions[i] = yPosition;
+
+			//For visualizing.
+			//Vector3 position = new Vector3(transform.position.x, yPosition);
+			//Instantiate(unit, position, Quaternion.identity);
 		}
 
+		//Level design:
+		//Note rows 0, 6 shouldn't  spawn anything
+		ObstacleInfo rowOne = new ObstacleInfo(stripPrefab, 1);
+		rowOne.leftSide = false;
+		rowOne.desiredSpeed = 4f;
+		rowOne.spawnDelay = 1f;
+
+		obstacleInfoList.Add(rowOne);
 	}
 	
-	// Update is called once per frame
+
 	void Update () {
-	
+		//Iterate through every obstacle info .
+		foreach(ObstacleInfo info in obstacleInfoList){
+			//pass in time since last frame
+			info.TickTimer(Time.deltaTime);
+			//if it is time to respawn object, reset timer and instantiate obstacle
+			if(info.timeLeft <= 0f){
+				info.ResetTimer();
+
+				float xPosition = rightXPosition;
+				if(info.leftSide)
+					xPosition = leftXPosition;
+
+				Vector3 position = new Vector3(xPosition, rowYPositions[info.row]);
+				Instantiate(info.obstaclePrefab, position, Quaternion.identity);
+			}
+		}
 	}
+
 }
