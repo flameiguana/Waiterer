@@ -3,7 +3,7 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour {
     
-    public float speed = 20;
+    public float speed = 40;
     public float hopDistance = 0.4f;
     public GameObject waiterPrefab;
     public Transform startPoint;
@@ -54,7 +54,7 @@ public class PlayerController : MonoBehaviour {
                 targetPosition = transform.position;
                 hopping = false;
             }
-        } else {
+        } else if(hopping){
             // if hopping, then transition to the target location
             if((Vector3.Distance(transform.position,targetPosition)>0.005)){
                 transform.position = Vector3.Lerp(transform.position, targetPosition, speed * Time.deltaTime);
