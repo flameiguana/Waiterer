@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour {
                 hopping = true;
             }
             // check if target is out of bounds
-            if(( Mathf.Abs(targetPosition.x) > 4) || (targetPosition.y < -4)){
+            if(( Mathf.Abs(targetPosition.x) > 2.8) || (targetPosition.y < -2.8)){
                 //reset the target and don't hop
                 targetPosition = transform.position;
                 hopping = false;
@@ -73,8 +73,8 @@ public class PlayerController : MonoBehaviour {
 	}
     
     public void OnGUI() { 
-        GUI.Label(new Rect(Screen.width/4 + 10, 5, 20, 10), "Lives = "+lives, textStyle);
-        GUI.Label(new Rect(Screen.width/4 + 10, 25, 20, 10), "Score = "+score, textStyle);
+        GUI.Label(new Rect(10, 5, 20, 10), "Lives = "+lives, textStyle);
+        GUI.Label(new Rect(10, 25, 20, 10), "Score = "+score, textStyle);
         if (gameOver){
             GUI.Label(new Rect(Screen.width/3, Screen.height/2, 20, 10), "YOU SUCK", resultTextStyle);
         }else if(levelComplete){
