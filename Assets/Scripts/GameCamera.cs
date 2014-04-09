@@ -4,7 +4,7 @@ using System.Collections;
 public class GameCamera : MonoBehaviour {
 
 	public Sprite background;
-
+	public float width;
 	// Use this for initialization
 	void Start () {
 
@@ -12,7 +12,8 @@ public class GameCamera : MonoBehaviour {
 		float desiredHeightUnits = background.bounds.size.y;
 		//adjust camera to match this
 		camera.orthographicSize = desiredHeightUnits / 2.0f;
-		//print (camera.orthographicSize);
+		width = camera.orthographicSize * 2f * camera.aspect;
+		//print (width);
 	}
 	
 	// Update is called once per frame
