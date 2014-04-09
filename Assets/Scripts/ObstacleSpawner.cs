@@ -67,7 +67,7 @@ public class ObstacleSpawner : MonoBehaviour {
 		//Level design:
 		//Note rows 0, 6 shouldn't  spawn anything
 		ObstacleInfo rowOne = new ObstacleInfo(stripPrefab, 1);
-		rowOne.leftSide = false;
+		rowOne.leftSide = true;
 		rowOne.desiredSpeed = 4f;
 		rowOne.spawnDelay = 1f;
 

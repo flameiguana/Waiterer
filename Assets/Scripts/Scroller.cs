@@ -14,5 +14,9 @@ public class Scroller : MonoBehaviour {
 	void Update () {
 		displacement.x = speed * Time.deltaTime;
 		transform.Translate(displacement);
+
+		if(transform.position.x < -4f || transform.position.x > 4f){
+			Destroy(gameObject);
+		}
 	}
 }
