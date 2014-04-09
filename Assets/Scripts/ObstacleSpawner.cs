@@ -90,7 +90,12 @@ public class ObstacleSpawner : MonoBehaviour {
 
 				Vector3 position = new Vector3(xPosition, rowYPositions[info.row]);
 				GameObject obstacle = Instantiate(info.obstaclePrefab, position, Quaternion.identity) as GameObject;
-				obstacle.GetComponent<Scroller>().speed = info.desiredSpeed;
+				//if spawning from right, go left, vice versa
+				float sign = -1f;
+				if(info.leftSide)
+					sign = 1f;
+
+				obstacle.GetComponent<Scroller>().speed = info.desiredSpeed * sign;
 			}
 		}
 	}
