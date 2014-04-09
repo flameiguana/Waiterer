@@ -62,7 +62,7 @@ public class PlayerController : MonoBehaviour {
                 // stop hopping to allow for a new move to be made
                 hopping = false;
                 // increase the score if a new max height has been reached
-                if (transform.position.y > lastHeightReached){
+                if ((transform.position.y - lastHeightReached)> 0.006){
                     score += 10;
                     lastHeightReached = transform.position.y; 
                 }
@@ -80,6 +80,7 @@ public class PlayerController : MonoBehaviour {
         }else if(levelComplete){
             GUI.Label(new Rect(Screen.width/3, Screen.height/2, 20, 10), "U DA BESSSSSSSSSSS", resultTextStyle);
         }
+        GUI.DrawTexture(new Rect((xOffset, yOffset, textureWidth, textureHeight, textureToDraw, ScaleMode.ScaleToFit, true);
     }
     
     void FixedUpdate() {
