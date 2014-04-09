@@ -89,7 +89,8 @@ public class ObstacleSpawner : MonoBehaviour {
 					xPosition = leftXPosition;
 
 				Vector3 position = new Vector3(xPosition, rowYPositions[info.row]);
-				Instantiate(info.obstaclePrefab, position, Quaternion.identity);
+				GameObject obstacle = Instantiate(info.obstaclePrefab, position, Quaternion.identity) as GameObject;
+				obstacle.GetComponent<Scroller>().speed = info.desiredSpeed;
 			}
 		}
 	}
