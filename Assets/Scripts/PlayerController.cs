@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour {
     public int drinksDelivered = 0;
     public bool gameOver = false;
     public bool levelComplete = false;
+    public bool onPlatform = false;
+    public float waterStartingY = 0.00f;
     
     private int score = 0;
     
@@ -33,19 +35,22 @@ public class PlayerController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        Debug.Log("in update");
-        if(!hopping){ // If 
+        if(!hopping){ //   
             if(Input.GetKeyDown(KeyCode.W)){
                 targetPosition.y = transform.position.y + hopDistance;
+                adjustForPlatformX();
                 hopping =true;
             }else if (Input.GetKeyDown(KeyCode.A)){
                 targetPosition.x = transform.position.x - hopDistance;
+                adjustForPlatformY();
                 hopping = true;
             }else if (Input.GetKeyDown(KeyCode.S)){
                 targetPosition.y = transform.position.y - hopDistance;
+                adjustForPlatformX();
                 hopping = true;
             }else if (Input.GetKeyDown(KeyCode.D)){
                 targetPosition.x = transform.position.x + hopDistance;
+                adjustForPlatformY();
                 hopping = true;
             }
             // check if target is out of bounds
@@ -67,7 +72,7 @@ public class PlayerController : MonoBehaviour {
                     lastHeightReached = transform.position.y; 
                 }
                 
-                Debug.Log("Score = "+score);
+                //Debug.Log("Score = "+score);
             }
         }
 	}
@@ -104,12 +109,38 @@ public class PlayerController : MonoBehaviour {
             if(lives == 0){
                 gameOver = true;
             }
+        }else if (other.gameObject.tag == "Platform" && !hopping){
+            transform.parent = other.transform;
+            hopping = false;
+            onPlatform = true;
+        }else if (other.gameObject.tag == "Water" && !hopping){
+            resetWaiter();
+            lives--;
+            if(lives == 0){
+                gameOver = true;
+            }
         }
     }
+    
     public void resetWaiter(){
         hopping = false;
         transform.position = startPoint.position;
         targetPosition = transform.position;
         lastHeightReached = transform.position.y;
+    }
+    
+    public void adjustForPlatformX(){
+        if(onPlatform){
+            onPlatform = false;
+            targetPosition.x = transform.position.x;
+            transform.parent = null;
+        }
+    }
+    public void adjustForPlatformY(){
+        if(onPlatform){
+            onPlatform = false;
+            targetPosition.y = transform.position.y;
+            transform.parent = null;
+        }
     }
 }

@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class ObstacleSpawner : MonoBehaviour {
+public class PlatformSpawner : MonoBehaviour {
 
 	public GameObject unit;
 	int ROWS = 12;
@@ -12,7 +12,7 @@ public class ObstacleSpawner : MonoBehaviour {
 
 
 
-	class ObstacleInfo{
+	class PlatformInfo{
 		public int row;
 		public bool leftSide = true;
 		public float desiredSpeed = 5f;
@@ -21,7 +21,7 @@ public class ObstacleSpawner : MonoBehaviour {
 
 		public float timeLeft;
 
-		public ObstacleInfo(GameObject obstaclePrefab, int row){
+		public PlatformInfo(GameObject obstaclePrefab, int row){
 			this.obstaclePrefab = obstaclePrefab;
 			this.row = row;
 			timeLeft = 0f;
@@ -36,7 +36,7 @@ public class ObstacleSpawner : MonoBehaviour {
 		}
 	}
 
-	List<ObstacleInfo> obstacleInfoList;
+	List<PlatformInfo> PlatformInfoList;
 
 	float[] rowYPositions;
 	float leftXPosition = -3.2f;
@@ -45,7 +45,7 @@ public class ObstacleSpawner : MonoBehaviour {
 
 	void Awake(){
 		rowYPositions = new float[ROWS];
-		obstacleInfoList = new List<ObstacleInfo>();
+		PlatformInfoList = new List<PlatformInfo>();
 	}
 
 	// Use this for initialization
@@ -65,47 +65,47 @@ public class ObstacleSpawner : MonoBehaviour {
 		}
 
 		//Level design:
-		//Note rows 0, 6 shouldn't  spawn anything
-		ObstacleInfo rowOne = new ObstacleInfo(stripPrefab, 1);
-		rowOne.leftSide = true;
-		rowOne.desiredSpeed = 2f;
-		rowOne.spawnDelay = 4f;
+		//Note rows 7 through 11 should spawn platforms
+		PlatformInfo row7 = new PlatformInfo(stripPrefab, 7);
+		row7.leftSide = true;
+		row7.desiredSpeed = 2f;
+		row7.spawnDelay = 2f;
 
-		obstacleInfoList.Add(rowOne);
+		PlatformInfoList.Add(row7);
         
-        ObstacleInfo rowTwo = new ObstacleInfo(stripPrefab, 2);
-		rowTwo.leftSide = false;
-		rowTwo.desiredSpeed = 1f;
-		rowTwo.spawnDelay = 4f;
+        PlatformInfo row8 = new PlatformInfo(stripPrefab, 8);
+		row8.leftSide = false;
+		row8.desiredSpeed = 3f;
+		row8.spawnDelay = 1f;
 
-		obstacleInfoList.Add(rowTwo);
+		PlatformInfoList.Add(row8);
         
-        ObstacleInfo rowThree = new ObstacleInfo(stripPrefab, 3);
-		rowThree.leftSide = true;
-		rowThree.desiredSpeed = 1f;
-		rowThree.spawnDelay = 4f;
+        PlatformInfo row9 = new PlatformInfo(stripPrefab, 9);
+		row9.leftSide = true;
+		row9.desiredSpeed = 2f;
+		row9.spawnDelay = 1.5f;
 
-		obstacleInfoList.Add(rowThree);
+		PlatformInfoList.Add(row9);
         
-        ObstacleInfo rowFour = new ObstacleInfo(stripPrefab, 4);
-		rowFour.leftSide = true;
-		rowFour.desiredSpeed = 2f;
-		rowFour.spawnDelay = 3f;
+        PlatformInfo row10 = new PlatformInfo(stripPrefab, 10);
+		row10.leftSide = false;
+		row10.desiredSpeed = 2f;
+		row10.spawnDelay = 1f;
 
-		obstacleInfoList.Add(rowFour);
+		PlatformInfoList.Add(row10);
         
-        ObstacleInfo rowFive = new ObstacleInfo(stripPrefab, 5);
-		rowFive.leftSide = false;
-		rowFive.desiredSpeed = 1.5f;
-		rowFive.spawnDelay = 4f;
+        PlatformInfo row11 = new PlatformInfo(stripPrefab, 11);
+		row11.leftSide = true;
+		row11.desiredSpeed = 2f;
+		row11.spawnDelay = 1f;
 
-		obstacleInfoList.Add(rowFive);
+		PlatformInfoList.Add(row11);
 	}
 	
 
 	void Update () {
 		//Iterate through every obstacle info .
-		foreach(ObstacleInfo info in obstacleInfoList){
+		foreach(PlatformInfo info in PlatformInfoList){
 			//pass in time since last frame
 			info.TickTimer(Time.deltaTime);
 			//if it is time to respawn object, reset timer and instantiate obstacle
