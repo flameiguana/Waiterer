@@ -5,6 +5,8 @@ TagManager:
   tags:
   - 
   - Obstacle
+  - Platform
+  - Water
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX
@@ -50,4 +52,8 @@ TagManager:
   - name: Foreground
     userID: 2
     uniqueID: 3319815423
+    locked: 0
+  - name: Player
+    userID: 3
+    uniqueID: 2093184853
     locked: 0
