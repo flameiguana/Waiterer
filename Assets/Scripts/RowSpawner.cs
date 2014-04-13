@@ -140,7 +140,7 @@ public class RowSpawner : MonoBehaviour {
 	
 
 	void Update () {
-		//Iterate through every obstacle info .
+		//Iterate through every obstacle info.
 		foreach(ObstacleInfo info in obstacleInfoList){
 			//pass in time since last frame
 			info.TickTimer(Time.deltaTime);
