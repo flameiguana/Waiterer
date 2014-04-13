@@ -2,14 +2,14 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class ObstacleSpawner : MonoBehaviour {
+public class RowSpawner : MonoBehaviour {
 
 	public GameObject unit;
 	int ROWS = 12;
 
 
-	public GameObject stripPrefab;
-
+	public GameObject stripEnemyPrefab;
+	public GameObject stripPlatformPrefab;
 
 
 	class ObstacleInfo{
@@ -66,40 +66,76 @@ public class ObstacleSpawner : MonoBehaviour {
 
 		//Level design:
 		//Note rows 0, 6 shouldn't  spawn anything
-		ObstacleInfo rowOne = new ObstacleInfo(stripPrefab, 1);
+		ObstacleInfo rowOne = new ObstacleInfo(stripEnemyPrefab, 1);
 		rowOne.leftSide = true;
 		rowOne.desiredSpeed = 2f;
 		rowOne.spawnDelay = 4f;
 
 		obstacleInfoList.Add(rowOne);
         
-        ObstacleInfo rowTwo = new ObstacleInfo(stripPrefab, 2);
+        ObstacleInfo rowTwo = new ObstacleInfo(stripEnemyPrefab, 2);
 		rowTwo.leftSide = false;
 		rowTwo.desiredSpeed = 1f;
 		rowTwo.spawnDelay = 4f;
 
 		obstacleInfoList.Add(rowTwo);
         
-        ObstacleInfo rowThree = new ObstacleInfo(stripPrefab, 3);
+        ObstacleInfo rowThree = new ObstacleInfo(stripEnemyPrefab, 3);
 		rowThree.leftSide = true;
 		rowThree.desiredSpeed = 1f;
 		rowThree.spawnDelay = 4f;
 
 		obstacleInfoList.Add(rowThree);
         
-        ObstacleInfo rowFour = new ObstacleInfo(stripPrefab, 4);
+        ObstacleInfo rowFour = new ObstacleInfo(stripEnemyPrefab, 4);
 		rowFour.leftSide = true;
 		rowFour.desiredSpeed = 2f;
 		rowFour.spawnDelay = 3f;
 
 		obstacleInfoList.Add(rowFour);
         
-        ObstacleInfo rowFive = new ObstacleInfo(stripPrefab, 5);
+        ObstacleInfo rowFive = new ObstacleInfo(stripEnemyPrefab, 5);
 		rowFive.leftSide = false;
 		rowFive.desiredSpeed = 1.5f;
 		rowFive.spawnDelay = 4f;
 
 		obstacleInfoList.Add(rowFive);
+
+		//Note rows 7 through 11 should spawn platforms
+		ObstacleInfo row7 = new ObstacleInfo(stripPlatformPrefab, 7);
+		row7.leftSide = true;
+		row7.desiredSpeed = 2f;
+		row7.spawnDelay = 2f;
+		
+		obstacleInfoList.Add(row7);
+		
+		ObstacleInfo row8 = new ObstacleInfo(stripPlatformPrefab, 8);
+		row8.leftSide = false;
+		row8.desiredSpeed = 3f;
+		row8.spawnDelay = 1f;
+		
+		obstacleInfoList.Add(row8);
+		
+		ObstacleInfo row9 = new ObstacleInfo(stripPlatformPrefab, 9);
+		row9.leftSide = true;
+		row9.desiredSpeed = 2f;
+		row9.spawnDelay = 1.5f;
+		
+		obstacleInfoList.Add(row9);
+		
+		ObstacleInfo row10 = new ObstacleInfo(stripPlatformPrefab, 10);
+		row10.leftSide = false;
+		row10.desiredSpeed = 2f;
+		row10.spawnDelay = 1f;
+		
+		obstacleInfoList.Add(row10);
+		
+		ObstacleInfo row11 = new ObstacleInfo(stripPlatformPrefab, 11);
+		row11.leftSide = true;
+		row11.desiredSpeed = 2f;
+		row11.spawnDelay = 1f;
+		
+		obstacleInfoList.Add(row11);
 	}
 	
 
