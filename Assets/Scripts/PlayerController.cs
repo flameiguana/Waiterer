@@ -81,8 +81,10 @@ public class PlayerController : MonoBehaviour {
         GUI.Label(new Rect(10, 5, 20, 10), "Lives = "+lives, textStyle);
         GUI.Label(new Rect(10, 25, 20, 10), "Score = "+score, textStyle);
         if (gameOver){
+            PauseMenu.pauseMenu.GameOverMenu();
             GUI.Label(new Rect(Screen.width/3, Screen.height/2, 20, 10), "YOU SUCK", resultTextStyle);
         }else if(levelComplete){
+            PauseMenu.pauseMenu.GameOverMenu();
             GUI.Label(new Rect(Screen.width/3, Screen.height/2, 20, 10), "U DA BESSSSSSSSSSS", resultTextStyle);
         }
         //GUI.DrawTexture(new Rect((xOffset, yOffset, textureWidth, textureHeight, textureToDraw, ScaleMode.ScaleToFit, true);
