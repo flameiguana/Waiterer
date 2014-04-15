@@ -364,6 +364,22 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 400006, guid: 41d36e7ab22872b45999ed79d4394a27, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 400008, guid: 41d36e7ab22872b45999ed79d4394a27, type: 2}
+      propertyPath: m_LocalScale.x
+      value: .00416666688
+      objectReference: {fileID: 0}
+    - target: {fileID: 400008, guid: 41d36e7ab22872b45999ed79d4394a27, type: 2}
+      propertyPath: m_LocalScale.y
+      value: .00416666688
+      objectReference: {fileID: 0}
+    - target: {fileID: 400008, guid: 41d36e7ab22872b45999ed79d4394a27, type: 2}
+      propertyPath: m_LocalScale.z
+      value: .00416666688
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 41d36e7ab22872b45999ed79d4394a27, type: 2}
   m_RootGameObject: {fileID: 1016325030}
@@ -822,17 +838,17 @@ MonoBehaviour:
   widgetsAreStatic: 0
   cullWhileDragging: 0
   worldToLocal:
-    e00: 228
+    e00: 239.999985
     e01: 0
     e02: 0
-    e03: 0
+    e03: .5
     e10: 0
-    e11: 228
+    e11: 239.999985
     e12: 0
     e13: -.5
     e20: 0
     e21: 0
-    e22: 228
+    e22: 239.999985
     e23: 0
     e30: 0
     e31: 0
@@ -1246,7 +1262,7 @@ Transform:
   m_PrefabInternal: {fileID: 198019467}
   m_GameObject: {fileID: 808707479}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: .5, z: 0}
+  m_LocalPosition: {x: -.5, y: .5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 555839153}
@@ -1447,7 +1463,7 @@ Transform:
   m_GameObject: {fileID: 1016325030}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: .00438596494, y: .00438596494, z: .00438596494}
+  m_LocalScale: {x: .00416666688, y: .00416666688, z: .00416666688}
   m_Children:
   - {fileID: 236005472}
   m_Father: {fileID: 0}
@@ -1487,17 +1503,17 @@ MonoBehaviour:
   widgetsAreStatic: 0
   cullWhileDragging: 0
   worldToLocal:
-    e00: 228
+    e00: 239.999985
     e01: 0
     e02: 0
     e03: 0
     e10: 0
-    e11: 228
+    e11: 239.999985
     e12: 0
     e13: 0
     e20: 0
     e21: 0
-    e22: 228
+    e22: 239.999985
     e23: 0
     e30: 0
     e31: 0
@@ -1781,7 +1797,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unit: {fileID: 100000, guid: 80255767b43710740a4e9199f643af66, type: 2}
   stripEnemyPrefab: {fileID: 100000, guid: 12f5c71842133a2498bec781586de0c8, type: 2}
+  twoUnitEnemyPrefab: {fileID: 100000, guid: e59e17588bc8ef94092b033a422ee9e8, type: 2}
   stripPlatformPrefab: {fileID: 100000, guid: 8f70bd9177a79c54a92e9117293fb19e, type: 2}
+  sixUnitPlatformPrefab: {fileID: 100000, guid: 3c96930d48b2d874684c5e80d94a09f3,
+    type: 2}
 --- !u!4 &1202557470
 Transform:
   m_ObjectHideFlags: 0
@@ -2400,3 +2419,41 @@ SpriteRenderer:
   m_SortingLayerID: 3319815423
   m_Sprite: {fileID: 21300000, guid: 8e2cb2a5aec64ba41868e47a19c57e8d, type: 3}
   m_Color: {r: .838235259, g: .727292359, b: .727292359, a: 1}
+--- !u!1 &2101713579
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 2101713581}
+  - 61: {fileID: 2101713580}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Water
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!61 &2101713580
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2101713579}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Size: {x: 5.5999999, y: 2}
+  m_Center: {x: 0, y: 0}
+--- !u!4 &2101713581
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2101713579}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -.00808783248, y: 1.01181197, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}

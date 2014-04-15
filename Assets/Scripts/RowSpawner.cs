@@ -9,7 +9,9 @@ public class RowSpawner : MonoBehaviour {
 
 
 	public GameObject stripEnemyPrefab;
+	public GameObject twoUnitEnemyPrefab;
 	public GameObject stripPlatformPrefab;
+	public GameObject sixUnitPlatformPrefab;
 
 
 	class ObstacleInfo{
@@ -87,7 +89,7 @@ public class RowSpawner : MonoBehaviour {
 
 		obstacleInfoList.Add(rowThree);
         
-        ObstacleInfo rowFour = new ObstacleInfo(stripEnemyPrefab, 4);
+        ObstacleInfo rowFour = new ObstacleInfo(twoUnitEnemyPrefab, 4);
 		rowFour.leftSide = true;
 		rowFour.desiredSpeed = 2f;
 		rowFour.spawnDelay = 3f;
@@ -116,10 +118,10 @@ public class RowSpawner : MonoBehaviour {
 		
 		obstacleInfoList.Add(row8);
 		
-		ObstacleInfo row9 = new ObstacleInfo(stripPlatformPrefab, 9);
+		ObstacleInfo row9 = new ObstacleInfo(sixUnitPlatformPrefab, 9);
 		row9.leftSide = true;
 		row9.desiredSpeed = 2f;
-		row9.spawnDelay = 1.5f;
+		row9.spawnDelay = 2f;
 		
 		obstacleInfoList.Add(row9);
 		
@@ -132,8 +134,8 @@ public class RowSpawner : MonoBehaviour {
 		
 		ObstacleInfo row11 = new ObstacleInfo(stripPlatformPrefab, 11);
 		row11.leftSide = true;
-		row11.desiredSpeed = 2f;
-		row11.spawnDelay = 1f;
+		row11.desiredSpeed = 1.5f;
+		row11.spawnDelay = 1.5f;
 		
 		obstacleInfoList.Add(row11);
 	}

@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour {
     public bool gameOver = false;
     public bool levelComplete = false;
     public bool onPlatform = false;
+	//the amount of fixedupdates that the player is detected to be in water
+	float inWaterFrames = 0;
     public float waterStartingY = 0.00f;
     
     private int score = 0;
@@ -91,7 +93,15 @@ public class PlayerController : MonoBehaviour {
     }
     
     void FixedUpdate() {
-        
+		//Counts you as being on water if you're in there for 2 or more frames
+        if(inWaterFrames >= 2){
+			print ("died to water");
+			resetWaiter();
+			lives--;
+			if(lives == 0){
+				gameOver = true;
+			}
+		}
     }
     // Check for any collisions
      void OnTriggerEnter2D(Collider2D other) {
@@ -110,22 +120,35 @@ public class PlayerController : MonoBehaviour {
             lives--;
             if(lives == 0){
                 gameOver = true;
-            }
+          }
         }else if (other.gameObject.tag == "Platform" && !hopping){
+			inWaterFrames = 0;
             transform.parent = other.transform;
             hopping = false;
             onPlatform = true;
-        }else if (other.gameObject.tag == "Water" && !hopping){
-            resetWaiter();
-            lives--;
-            if(lives == 0){
-                gameOver = true;
-            }
-        }
-    }
+        } 
+		else {
+			inWaterFrames = 0;
+		}
+	}
+
+	//Can't rely on trigger enter because it may miss the point where it enters.
+	void OnTriggerStay2D(Collider2D other){
+		if (other.gameObject.tag == "Platform" && !hopping){
+			inWaterFrames = 0;
+			onPlatform = true;
+		}
+		else if(other.gameObject.tag == "Water" && !hopping && !onPlatform){
+			inWaterFrames++;
+		}
+		else {
+			inWaterFrames = 0;
+		}
+	}
     
     public void resetWaiter(){
         hopping = false;
+		inWaterFrames = 0;
         transform.position = startPoint.position;
         targetPosition = transform.position;
         lastHeightReached = transform.position.y;
