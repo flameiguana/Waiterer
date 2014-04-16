@@ -10,15 +10,12 @@ GameObject:
   - 4: {fileID: 400000}
   - 114: {fileID: 11400000}
   m_Layer: 0
-  m_Name: Localization
+  m_Name: New
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1002 &100001
-EditorExtensionImpl:
-  serializedVersion: 6
 --- !u!4 &400000
 Transform:
   m_ObjectHideFlags: 1
@@ -30,9 +27,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
---- !u!1002 &400001
-EditorExtensionImpl:
-  serializedVersion: 6
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -41,16 +35,32 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4850261060aea044ae098e8e9979e62, type: 3}
+  m_Script: {fileID: 11500000, guid: 4d0c51bb0b6e93049af5e88f93826e3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingLanguage: 
-  languages:
-  - {fileID: 4900000, guid: 38abc3caac7e6ed4faa39ab92f1b62d1, type: 3}
-  - {fileID: 4900000, guid: cefb9dda325427d48ab4bc7fff3e8777, type: 3}
---- !u!1002 &11400001
-EditorExtensionImpl:
-  serializedVersion: 6
+  material: {fileID: 2100000, guid: dfc762e6b43194b5b8f0718b207b1abd, type: 2}
+  sprites:
+  - name: TimeBar
+    outer:
+      serializedVersion: 2
+      x: 0
+      y: 492
+      width: 300
+      height: 20
+    inner:
+      serializedVersion: 2
+      x: 0
+      y: 492
+      width: 300
+      height: 20
+    rotated: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  mCoordinates: 0
+  mPixelSize: 1
+  mReplacement: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -63,6 +73,3 @@ Prefab:
   m_RootGameObject: {fileID: 100000}
   m_IsPrefabParent: 1
   m_IsExploded: 1
---- !u!1002 &100100001
-EditorExtensionImpl:
-  serializedVersion: 6
