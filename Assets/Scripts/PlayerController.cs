@@ -61,9 +61,10 @@ public class PlayerController : MonoBehaviour {
                 targetPosition = transform.position;
                 hopping = false;
             }
-        } else if(hopping){
+        } 
+		if(hopping){
             // if hopping, then transition to the target location
-            if((Vector3.Distance(transform.position,targetPosition)>0.005)){
+            if((Vector3.Distance(transform.position,targetPosition) >0.005)){
                 transform.position = Vector3.Lerp(transform.position, targetPosition, speed * Time.deltaTime);
             } else {
                 // stop hopping to allow for a new move to be made
@@ -161,6 +162,7 @@ public class PlayerController : MonoBehaviour {
             transform.parent = null;
         }
     }
+
     public void adjustForPlatformY(){
         if(onPlatform){
             onPlatform = false;
