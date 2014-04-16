@@ -7,6 +7,11 @@ public class PlayerController : MonoBehaviour {
     public float hopDistance = 0.4f;
     public GameObject waiterPrefab;
     public Transform startPoint;
+    public AudioClip jump;
+    public AudioClip crashWhistle;
+    public AudioClip crashDishes;
+    public AudioClip splash;
+    public AudioClip laughing;
     
     public bool onPlatform = false;
 	//the amount of fixedupdates that the player is detected to be in water
@@ -46,6 +51,9 @@ public class PlayerController : MonoBehaviour {
             }else if (Input.GetKeyDown(KeyCode.D)){
                 targetDisplacement.x = hopDistance;
                 hopping = true;
+            }
+            if(hopping){
+                audio.PlayOneShot(jump);
             }
 
 			targetPosition = transform.localPosition + targetDisplacement;
@@ -96,6 +104,8 @@ public class PlayerController : MonoBehaviour {
 		//Counts you as being on water if you're in there for 2 or more frames
         if(inWaterFrames >= 2){
 			resetWaiter();
+            audio.PlayOneShot(splash);
+            audio.PlayOneShot(laughing);
 			GameState.state.WaitererFell();
 		}
     }
@@ -108,6 +118,9 @@ public class PlayerController : MonoBehaviour {
             GameState.state.CustomerServed();   
         }else if (other.gameObject.tag == "Obstacle"){
             resetWaiter();
+            audio.PlayOneShot(crashWhistle);
+            audio.PlayOneShot(crashDishes);
+            audio.PlayOneShot(laughing);
             GameState.state.WaitererFell();
         }else if (other.gameObject.tag == "Platform" && !hopping){
 			inWaterFrames = 0;

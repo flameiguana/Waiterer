@@ -27,6 +27,7 @@ GameObject:
   - 114: {fileID: 11400000}
   - 50: {fileID: 5000000}
   - 61: {fileID: 6100000}
+  - 82: {fileID: 8200000}
   m_Layer: 0
   m_Name: waiter
   m_TagString: Untagged
@@ -110,6 +111,64 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_Size: {x: .399999976, y: .399999976}
   m_Center: {x: 0, y: 2.38418579e-07}
+--- !u!82 &8200000
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100002}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -125,6 +184,11 @@ MonoBehaviour:
   hopDistance: .400000006
   waiterPrefab: {fileID: 100000, guid: b2584e6e511386049b62dcad789bfcfb, type: 2}
   startPoint: {fileID: 400004}
+  jump: {fileID: 8300000, guid: a39d53903ea93f1479596b0e5da32718, type: 3}
+  crashWhistle: {fileID: 8300000, guid: b19b14fc9a637c04bb9c9e99294d494c, type: 3}
+  crashDishes: {fileID: 8300000, guid: 82fb18b233e4ef34bb6aeeff669dbc4c, type: 3}
+  splash: {fileID: 8300000, guid: 65eeacb30aa8acf4a9bbaaf5935d946a, type: 3}
+  laughing: {fileID: 8300000, guid: cb410cf743ae6d244aec2d9331daaf3a, type: 3}
   onPlatform: 0
   waterStartingY: 0
   textStyle:

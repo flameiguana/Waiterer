@@ -7,6 +7,10 @@ public class GameState : MonoBehaviour {
     public static int STARTING_LIVES = 5;
     public static int CUSTOMERS = 5;
     
+    public AudioClip levelComplete;
+    public AudioClip gameOver;
+    public AudioClip happyCustomer;
+    
     private bool _paused;
     private int _lives = STARTING_LIVES;
     private int _score = 0;
@@ -73,13 +77,17 @@ public class GameState : MonoBehaviour {
         _lives--;
         if (_lives == 0){
             _gameOver = true;
+            audio.PlayOneShot(gameOver);
         }
     }
     
     public void CustomerServed(){
         _customersServed++;
         if(_customersServed == CUSTOMERS){
+            audio.PlayOneShot(levelComplete);
             _levelComplete = true;
+        }else{
+            audio.PlayOneShot(happyCustomer);
         }
     }
 }
