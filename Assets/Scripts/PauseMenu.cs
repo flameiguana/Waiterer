@@ -2,15 +2,13 @@
 using System.Collections;
 
 public class PauseMenu : MonoBehaviour {
-	//keep game  state here for now
-	public bool paused;
     public static PauseMenu pauseMenu;
     private GameObject menuPanel;
     public GameObject resumeButton;
 
 	public void PauseToggle(){
-		paused = !paused;
-		if(paused){
+		GameState.state.PauseToggle();
+		if(GameState.state.Paused){
 			Time.timeScale = 0f;
             menuPanel.SetActive(true); 
 		}
@@ -27,7 +25,6 @@ public class PauseMenu : MonoBehaviour {
 
 
 	void Start () {
-		paused = false;
         // grab menu for enabling/disabling
         menuPanel = GameObject.Find("PausePanel");
         resumeButton = GameObject.Find("ResumeButton");

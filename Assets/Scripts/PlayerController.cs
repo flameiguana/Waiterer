@@ -8,16 +8,10 @@ public class PlayerController : MonoBehaviour {
     public GameObject waiterPrefab;
     public Transform startPoint;
     
-    public int lives = 3;
-    public int drinksDelivered = 0;
-    public bool gameOver = false;
-    public bool levelComplete = false;
     public bool onPlatform = false;
 	//the amount of fixedupdates that the player is detected to be in water
 	float inWaterFrames = 0;
     public float waterStartingY = 0.00f;
-    
-    private int score = 0;
     
     private float lastHeightReached;
     
@@ -78,22 +72,21 @@ public class PlayerController : MonoBehaviour {
 				transform.parent = null;
                 // increase the score if a new max height has been reached
                 if ((transform.position.y - lastHeightReached)> 0.006){
-                    score += 10;
+                    GameState.state.Score += 10;
                     lastHeightReached = transform.position.y; 
                 }
-                //Debug.Log("Score = "+score);
            }
         }
 	}
     
     public void OnGUI() { 
-        GUI.Label(new Rect(10, 5, 20, 10), "Lives = "+lives, textStyle);
-        GUI.Label(new Rect(10, 25, 20, 10), "Score = "+score, textStyle);
-        if (gameOver){
-            PauseMenu.pauseMenu.GameOverMenu();
+        GUI.Label(new Rect(10, 5, 20, 10), "Lives = "+GameState.state.Lives, textStyle);
+        GUI.Label(new Rect(10, 25, 20, 10), "Score = "+GameState.state.Score, textStyle);
+        if (GameState.state.GameOver){
+            //PauseMenu.pauseMenu.GameOverMenu();
             GUI.Label(new Rect(Screen.width/3, Screen.height/2, 20, 10), "YOU SUCK", resultTextStyle);
-        }else if(levelComplete){
-            PauseMenu.pauseMenu.GameOverMenu();
+        }else if(GameState.state.LevelComplete){
+            //PauseMenu.pauseMenu.GameOverMenu();
             GUI.Label(new Rect(Screen.width/3, Screen.height/2, 20, 10), "U DA BESSSSSSSSSSS", resultTextStyle);
         }
         //GUI.DrawTexture(new Rect((xOffset, yOffset, textureWidth, textureHeight, textureToDraw, ScaleMode.ScaleToFit, true);
@@ -102,12 +95,8 @@ public class PlayerController : MonoBehaviour {
     void FixedUpdate() {
 		//Counts you as being on water if you're in there for 2 or more frames
         if(inWaterFrames >= 2){
-			print ("died to water");
 			resetWaiter();
-			lives--;
-			if(lives == 0){
-				gameOver = true;
-			}
+			GameState.state.WaitererFell();
 		}
     }
     // Check for any collisions
@@ -115,26 +104,17 @@ public class PlayerController : MonoBehaviour {
         if (other.gameObject.tag == "Finish"){ //create a new waiter at the starting point
             GameObject newWaiterer = (GameObject)Instantiate(waiterPrefab, transform.position, transform.rotation);
             resetWaiter();
-            drinksDelivered++;
-            score += 100;
-            if(drinksDelivered == 5){
-                //score += secondsLeft;
-                levelComplete = true;
-            }
-            
+            GameState.state.Score += 100;
+            GameState.state.CustomerServed();   
         }else if (other.gameObject.tag == "Obstacle"){
             resetWaiter();
-            lives--;
-            if(lives == 0){
-                gameOver = true;
-          }
+            GameState.state.WaitererFell();
         }else if (other.gameObject.tag == "Platform" && !hopping){
 			inWaterFrames = 0;
             transform.parent = other.transform;
             hopping = false;
             onPlatform = true;
-        } 
-		else {
+        }else {
 			inWaterFrames = 0;
 		}
 	}
