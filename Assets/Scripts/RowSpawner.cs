@@ -106,7 +106,7 @@ public class RowSpawner : MonoBehaviour {
 		//Note rows 7 through 11 should spawn platforms
 		ObstacleInfo row7 = new ObstacleInfo(stripPlatformPrefab, 7);
 		row7.leftSide = true;
-		row7.desiredSpeed = 2f;
+		row7.desiredSpeed = 1f;
 		row7.spawnDelay = 2f;
 		
 		obstacleInfoList.Add(row7);

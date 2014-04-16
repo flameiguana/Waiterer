@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour {
     
     private float lastHeightReached;
     
-    private Vector2 targetPosition;
+    private Vector3 targetDisplacement;
     
     private bool hopping = false;
     
@@ -29,54 +29,60 @@ public class PlayerController : MonoBehaviour {
     public GUIStyle textStyle;
     public GUIStyle resultTextStyle;
     
+
 	// Use this for initialization
 	void Start () {
-        targetPosition = transform.position;
         lastHeightReached = transform.position.y;
+		transform.localPosition = startPoint.localPosition;
 	}
-	
+	Vector3 targetPosition;
 	// Update is called once per frame
 	void Update () {
-        if(!hopping){ //   
+        if(!hopping){ //
+			targetDisplacement = Vector3.zero;
             if(Input.GetKeyDown(KeyCode.W)){
-                targetPosition.y = transform.position.y + hopDistance;
-                adjustForPlatformX();
+                targetDisplacement.y = hopDistance;
                 hopping =true;
             }else if (Input.GetKeyDown(KeyCode.A)){
-                targetPosition.x = transform.position.x - hopDistance;
-                adjustForPlatformY();
+                targetDisplacement.x = -hopDistance;
                 hopping = true;
             }else if (Input.GetKeyDown(KeyCode.S)){
-                targetPosition.y = transform.position.y - hopDistance;
-                adjustForPlatformX();
+                targetDisplacement.y = -hopDistance;
                 hopping = true;
             }else if (Input.GetKeyDown(KeyCode.D)){
-                targetPosition.x = transform.position.x + hopDistance;
-                adjustForPlatformY();
+                targetDisplacement.x = hopDistance;
                 hopping = true;
             }
+
+			targetPosition = transform.localPosition + targetDisplacement;
+
             // check if target is out of bounds
-            if(( Mathf.Abs(targetPosition.x) > 2.8) || (targetPosition.y < -2.8)){
+			Vector3 worldPosition = transform.position + targetDisplacement;
+			if((Mathf.Abs(worldPosition.x) > 2.8f) || worldPosition.y < -2.8f){
                 //reset the target and don't hop
-                targetPosition = transform.position;
+				targetPosition = transform.localPosition;
+                targetDisplacement = Vector3.zero;
                 hopping = false;
             }
         } 
 		if(hopping){
             // if hopping, then transition to the target location
-            if((Vector3.Distance(transform.position,targetPosition) >0.005)){
-                transform.position = Vector3.Lerp(transform.position, targetPosition, speed * Time.deltaTime);
+			float distance = Vector3.Distance(transform.localPosition, targetPosition);
+            if(distance > 0.005f){
+				transform.localPosition = Vector3.Lerp(transform.localPosition, targetPosition, speed * Time.deltaTime);
             } else {
                 // stop hopping to allow for a new move to be made
+				transform.localPosition = targetPosition;
                 hopping = false;
+				onPlatform = false;
+				transform.parent = null;
                 // increase the score if a new max height has been reached
                 if ((transform.position.y - lastHeightReached)> 0.006){
                     score += 10;
                     lastHeightReached = transform.position.y; 
                 }
-                
                 //Debug.Log("Score = "+score);
-            }
+           }
         }
 	}
     
@@ -147,27 +153,13 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
     
+
     public void resetWaiter(){
+		transform.parent = null;
         hopping = false;
 		inWaterFrames = 0;
         transform.position = startPoint.position;
-        targetPosition = transform.position;
+        targetDisplacement = transform.position;
         lastHeightReached = transform.position.y;
-    }
-    
-    public void adjustForPlatformX(){
-        if(onPlatform){
-            onPlatform = false;
-            targetPosition.x = transform.position.x;
-            transform.parent = null;
-        }
-    }
-
-    public void adjustForPlatformY(){
-        if(onPlatform){
-            onPlatform = false;
-            targetPosition.y = transform.position.y;
-            transform.parent = null;
-        }
     }
 }
