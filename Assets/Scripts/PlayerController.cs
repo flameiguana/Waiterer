@@ -37,6 +37,9 @@ public class PlayerController : MonoBehaviour {
 	Vector3 targetPosition;
 	// Update is called once per frame
 	void Update () {
+        if(GameState.state.GameOver){
+            Destroy(this);
+        }
         if(!hopping){ //
 			targetDisplacement = Vector3.zero;
             if(Input.GetKeyDown(KeyCode.W)){

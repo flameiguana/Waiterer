@@ -90,4 +90,9 @@ public class GameState : MonoBehaviour {
             audio.PlayOneShot(happyCustomer);
         }
     }
+    
+    public void TimeOut(){
+        audio.PlayOneShot(gameOver);
+        _gameOver = true;
+    }
 }
