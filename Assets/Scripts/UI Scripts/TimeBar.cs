@@ -2,6 +2,7 @@
 using System.Collections;
 
 public class TimeBar : MonoBehaviour {
+    public static TimeBar timer;
 	public int levelTimeLimit = 20;
     public float time;
 	public UISlider timeBar;
@@ -13,6 +14,12 @@ public class TimeBar : MonoBehaviour {
 	void Start () {
 		 time = levelTimeLimit;
 		 timeBar = gameObject.GetComponent<UISlider> ();
+         
+         if(timer != null) {
+            Debug.LogError("There can never be two pause menus... Something went terribly wrong");
+            return;
+        }
+        timer = this;
 	}
 	
 	// Update is called once per frame
@@ -26,5 +33,11 @@ public class TimeBar : MonoBehaviour {
             GameState.state.TimeOut();
             Destroy(this);
         }
+	}
+    
+    	//Calculates score based on time left
+	public float calculateScore (){
+		float score = time * 10;
+		return score;
 	}
 }

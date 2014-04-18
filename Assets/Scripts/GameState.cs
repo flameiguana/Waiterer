@@ -13,7 +13,7 @@ public class GameState : MonoBehaviour {
     
     private bool _paused;
     private int _lives = STARTING_LIVES;
-    private int _score = 0;
+    private float _score = 0;
     private int _customersServed = 0;
     private bool _gameOver = false;
     private bool _levelComplete = false;
@@ -61,7 +61,7 @@ public class GameState : MonoBehaviour {
         set { _levelComplete = value; }
     }
     
-    public int Score
+    public float Score
     {
         get { return _score; }
         set { _score = value; }
@@ -84,6 +84,7 @@ public class GameState : MonoBehaviour {
     public void CustomerServed(){
         _customersServed++;
         if(_customersServed == CUSTOMERS){
+            _score += TimeBar.timer.calculateScore ();
             audio.PlayOneShot(levelComplete);
             _levelComplete = true;
         }else{

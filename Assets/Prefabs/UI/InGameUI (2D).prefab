@@ -76,8 +76,8 @@ GameObject:
   - 114: {fileID: 11400008}
   - 114: {fileID: 11400028}
   - 114: {fileID: 11400018}
-  - 114: {fileID: 11400044}
   - 82: {fileID: 8200000}
+  - 114: {fileID: 11400044}
   m_Layer: 8
   m_Name: InGameUI (2D)
   m_TagString: Untagged
@@ -246,8 +246,24 @@ GameObject:
   - 114: {fileID: 11400038}
   - 114: {fileID: 11400040}
   - 114: {fileID: 11400042}
+  - 82: {fileID: 8200002}
   m_Layer: 8
   m_Name: TimeBar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &100030
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 400030}
+  m_Layer: 0
+  m_Name: LifeCounterLocation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -297,7 +313,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100006}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.50047344, y: 0, z: 0}
+  m_LocalPosition: {x: -.499516666, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400004}
@@ -311,9 +327,10 @@ Transform:
   m_GameObject: {fileID: 100008}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: .00441501103, y: .00441501103, z: .00441501103}
+  m_LocalScale: {x: .00451467279, y: .00451467279, z: .00451467279}
   m_Children:
   - {fileID: 400002}
+  - {fileID: 400030}
   m_Father: {fileID: 0}
 --- !u!4 &400010
 Transform:
@@ -416,7 +433,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100026}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 7.92999983, y: -69.8000031, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400028}
@@ -428,10 +445,21 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 145.449493, y: -238.952713, z: 0}
-  m_LocalScale: {x: 217.499985, y: 50, z: 54839.9961}
+  m_LocalPosition: {x: 185.830002, y: -239.601349, z: 0}
+  m_LocalScale: {x: 305.071747, y: 18.7500038, z: 54839.9961}
   m_Children: []
   m_Father: {fileID: 400026}
+--- !u!4 &400030
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100030}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -262.259583, y: -294.400238, z: 0}
+  m_LocalScale: {x: 320, y: 320, z: 320}
+  m_Children: []
+  m_Father: {fileID: 400008}
 --- !u!20 &2000000
 Camera:
   m_ObjectHideFlags: 1
@@ -503,7 +531,7 @@ AudioSource:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100008}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_audioClip: {fileID: 8300000, guid: 82ea2fd2f260532439ed7cb40b2b0737, type: 3}
   m_PlayOnAwake: 1
@@ -512,6 +540,64 @@ AudioSource:
   Loop: 1
   Mute: 0
   Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+--- !u!82 &8200002
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100028}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 255
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -638,17 +724,17 @@ MonoBehaviour:
   widgetsAreStatic: 0
   cullWhileDragging: 0
   worldToLocal:
-    e00: 226.5
+    e00: 221.5
     e01: 0
     e02: 0
-    e03: .50047344
+    e03: .499516666
     e10: 0
-    e11: 226.5
+    e11: 221.5
     e12: 0
-    e13: 0
+    e13: -1
     e20: 0
     e21: 0
-    e22: 226.5
+    e22: 221.5
     e23: 0
     e30: 0
     e31: 0
@@ -712,17 +798,17 @@ MonoBehaviour:
   widgetsAreStatic: 0
   cullWhileDragging: 0
   worldToLocal:
-    e00: 226.5
+    e00: 221.5
     e01: 0
     e02: 0
-    e03: .50047344
+    e03: -7.43048334
     e10: 0
-    e11: 226.5
+    e11: 221.5
     e12: 0
-    e13: 0
+    e13: 68.8000031
     e20: 0
     e21: 0
-    e22: 226.5
+    e22: 221.5
     e23: 0
     e30: 0
     e31: 0
@@ -888,17 +974,17 @@ MonoBehaviour:
   widgetsAreStatic: 0
   cullWhileDragging: 0
   worldToLocal:
-    e00: 226.5
+    e00: 221.5
     e01: 0
     e02: 0
     e03: 0
     e10: 0
-    e11: 226.5
+    e11: 221.5
     e12: 0
     e13: 0
     e20: 0
     e21: 0
-    e22: 226.5
+    e22: 221.5
     e23: 0
     e30: 0
     e31: 0
@@ -1036,8 +1122,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cceaef8442fc447479d5a01d39cb4d31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelTimeLimit: 90
   time: 0
   timeBar: {fileID: 0}
+  alarmRung: 0
+  alarmSound: {fileID: 8300000, guid: 8c1893b9c4c7afa4c8b95af1b1d5d2ef, type: 3}
 --- !u!114 &11400044
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1046,12 +1135,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 100008}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0af0a2d52427114e88d5ccc35e38d14, type: 3}
+  m_Script: {fileID: 11500000, guid: 293b36f6fadb4c847b720b96815b3f7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelComplete: {fileID: 8300000, guid: 0518dc26d413cb84abf36e7a149424c6, type: 3}
-  gameOver: {fileID: 8300000, guid: a8482bec67445c64dafe0fa0d1f4d0bd, type: 3}
-  happyCustomer: {fileID: 8300000, guid: 51c2c6e9c79aac64586c283bfdb66907, type: 3}
+  lifeLocation: {fileID: 400030}
+  lifePrefab: {fileID: 100000, guid: 561245df2a0e5e342825ef596efb1c10, type: 2}
+  currentLives: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

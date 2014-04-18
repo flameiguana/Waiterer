@@ -309,6 +309,8 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
+  dollars: 0
+  change: 0
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

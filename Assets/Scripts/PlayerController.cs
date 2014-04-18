@@ -28,6 +28,9 @@ public class PlayerController : MonoBehaviour {
     public GUIStyle textStyle;
     public GUIStyle resultTextStyle;
     
+    public int dollars;
+    public int change;
+    
 
 	// Use this for initialization
 	void Start () {
@@ -91,8 +94,15 @@ public class PlayerController : MonoBehaviour {
 	}
     
     public void OnGUI() { 
-        GUI.Label(new Rect(10, 5, 20, 10), "Lives = "+GameState.state.Lives, textStyle);
-        GUI.Label(new Rect(10, 25, 20, 10), "Score = "+GameState.state.Score, textStyle);
+        //public int dollars;
+        //public int change;
+        dollars = (int) GameState.state.Score / 100;
+        change = (int) GameState.state.Score % 100;
+        GUI.Label(new Rect(10, 25, 20, 10), "Tips $"+dollars+"."+change, textStyle);
+        
+        
+        //GUI.Label(new Rect(10, 5, 20, 10), "Lives = "+GameState.state.Lives, textStyle);
+        //GUI.Label(new Rect(10, 25, 20, 10), "Score = "+GameState.state.Score, textStyle);
         if (GameState.state.GameOver){
             //PauseMenu.pauseMenu.GameOverMenu();
             GUI.Label(new Rect(Screen.width/3, Screen.height/2, 20, 10), "YOU SUCK", resultTextStyle);
