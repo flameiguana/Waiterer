@@ -121,6 +121,15 @@ public class PlayerController : MonoBehaviour {
             audio.PlayOneShot(laughing);
 			GameState.state.WaitererFell();
 		}
+		Transform parentPlatform = transform.parent;
+
+		//TODO: Should probably use an event instead of checking every frame
+		if(parentPlatform != null && parentPlatform.GetComponent<Submerge>() != null){
+			if(parentPlatform.GetComponent<Submerge>().submerged){
+				transform.parent = null;
+				onPlatform = false;
+			}
+		}
     }
     // Check for any collisions
      void OnTriggerEnter2D(Collider2D other) {

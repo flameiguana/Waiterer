@@ -15,6 +15,7 @@ public class RowSpawner : MonoBehaviour {
 	public GameObject sixUnitPlatformPrefab;
 
 
+
 	class ObstacleInfo{
 		public int row;
 		public bool leftSide = true;
@@ -23,6 +24,10 @@ public class RowSpawner : MonoBehaviour {
 		public GameObject obstaclePrefab;
 
 		public float timeLeft;
+		public int timesSpawned = 0;
+
+		public int submersionFrequency;
+		public bool submerge = false;
 
 		public ObstacleInfo(GameObject obstaclePrefab, int row){
 			this.obstaclePrefab = obstaclePrefab;
@@ -37,6 +42,12 @@ public class RowSpawner : MonoBehaviour {
 		public void ResetTimer(){
 			timeLeft = spawnDelay;
 		}
+
+		public void EnableSubmersion(int frequency){
+			submersionFrequency = frequency;
+			submerge = true;
+		}
+
 	}
 
 	List<ObstacleInfo> obstacleInfoList;
@@ -109,6 +120,7 @@ public class RowSpawner : MonoBehaviour {
 		row7.leftSide = true;
 		row7.desiredSpeed = 1.2f;
 		row7.spawnDelay = 1.5f;
+		row7.EnableSubmersion(3);
 		
 		obstacleInfoList.Add(row7);
 		
@@ -157,12 +169,17 @@ public class RowSpawner : MonoBehaviour {
 
 				Vector3 position = new Vector3(xPosition, rowYPositions[info.row]);
 				GameObject obstacle = Instantiate(info.obstaclePrefab, position, Quaternion.identity) as GameObject;
+				info.timesSpawned++;
 				//if spawning from right, go left, vice versa
 				float sign = -1f;
 				if(info.leftSide)
 					sign = 1f;
 
 				obstacle.GetComponent<Scroller>().speed = info.desiredSpeed * sign;
+				//just werks
+				if(info.submerge && info.timesSpawned % info.submersionFrequency == 0){
+					obstacle.AddComponent<Submerge>();
+				}
 			}
 		}
 	}
