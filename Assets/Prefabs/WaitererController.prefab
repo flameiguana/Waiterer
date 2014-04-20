@@ -189,6 +189,11 @@ MonoBehaviour:
   crashDishes: {fileID: 8300000, guid: 82fb18b233e4ef34bb6aeeff669dbc4c, type: 3}
   splash: {fileID: 8300000, guid: 65eeacb30aa8acf4a9bbaaf5935d946a, type: 3}
   laughing: {fileID: 8300000, guid: cb410cf743ae6d244aec2d9331daaf3a, type: 3}
+  foodDelivered:
+  - {fileID: 100000, guid: f38300c2a4f4ffb46bad197d4a2de1bb, type: 2}
+  - {fileID: 100000, guid: b2e1e354381f74448871502d96776f62, type: 2}
+  - {fileID: 100000, guid: fe9de2c449a643b4992f6927993dbb8f, type: 2}
+  - {fileID: 100000, guid: 4fd5f73e8737d6647979d1d4407b3551, type: 2}
   onPlatform: 0
   waterStartingY: 0
   textStyle:

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class PlayerController : MonoBehaviour {
     
@@ -12,6 +13,7 @@ public class PlayerController : MonoBehaviour {
     public AudioClip crashDishes;
     public AudioClip splash;
     public AudioClip laughing;
+    public List<GameObject> foodDelivered = new List<GameObject>();
     
     public bool onPlatform = false;
 	//the amount of fixedupdates that the player is detected to be in water
@@ -125,7 +127,8 @@ public class PlayerController : MonoBehaviour {
     // Check for any collisions
      void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.tag == "Finish"){ //create a new waiter at the starting point
-            GameObject newWaiterer = (GameObject)Instantiate(waiterPrefab, transform.position, transform.rotation);
+            //GameObject newWaiterer = (GameObject)Instantiate(waiterPrefab, transform.position, transform.rotation);
+            GameObject deliveredFood = (GameObject)Instantiate(foodDelivered[Random.Range(0, foodDelivered.Count -1)], transform.position, transform.rotation);
             resetWaiter();
             GameState.state.Score += 100;
             GameState.state.CustomerServed();   
