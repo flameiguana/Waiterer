@@ -53,8 +53,8 @@ public class RowSpawner : MonoBehaviour {
 	List<ObstacleInfo> obstacleInfoList;
 
 	float[] rowYPositions;
-	float leftXPosition = -3.2f;
-	float rightXPosition = 3.2f;
+	float leftXPosition = -4.2f;
+	float rightXPosition = 4.2f;
 
 
 	void Awake(){
