@@ -3,8 +3,10 @@ using System.Collections;
 
 public class NextLevelButton : MonoBehaviour {
 
+    public string nextLevel;
+    
 	void OnPress(){
-		Application.LoadLevel("Game");
+		Application.LoadLevel(nextLevel);
         Time.timeScale = 1f;
 	}
 }
