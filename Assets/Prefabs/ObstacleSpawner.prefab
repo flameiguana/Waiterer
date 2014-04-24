@@ -47,6 +47,7 @@ MonoBehaviour:
     type: 2}
   sixUnitPlatformPrefab: {fileID: 100000, guid: 3c96930d48b2d874684c5e80d94a09f3,
     type: 2}
+  CashMoney: {fileID: 100000, guid: bac00734632f47d4b85806df691fb4c1, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

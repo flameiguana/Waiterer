@@ -15,7 +15,7 @@ public class RowSpawner : MonoBehaviour {
     public GameObject twoUnitPlatformPrefab;
 	public GameObject sixUnitPlatformPrefab;
 
-
+	public GameObject CashMoney;
 
 	class ObstacleInfo{
 		public int row;
@@ -27,8 +27,10 @@ public class RowSpawner : MonoBehaviour {
 		public float timeLeft;
 		public int timesSpawned = 0;
 
-		public int submersionFrequency;
-		public bool submerge = false;
+		public int submersionFrequency = 0;
+
+		public int specialItemFrequency = 0;
+		public GameObject specialItem;
 
 		public ObstacleInfo(GameObject obstaclePrefab, int row){
 			this.obstaclePrefab = obstaclePrefab;
@@ -46,7 +48,11 @@ public class RowSpawner : MonoBehaviour {
 
 		public void EnableSubmersion(int frequency){
 			submersionFrequency = frequency;
-			submerge = true;
+		}
+
+		public void SpawnSpecialItem(GameObject item, int frequency){
+			specialItem = item;
+			specialItemFrequency = frequency;
 		}
 
 	}
@@ -129,6 +135,7 @@ public class RowSpawner : MonoBehaviour {
 		row8.leftSide = false;
 		row8.desiredSpeed = 1.2f;
 		row8.spawnDelay = 3f;
+		row8.SpawnSpecialItem(CashMoney, 8);
 		
 		obstacleInfoList.Add(row8);
 		
@@ -150,7 +157,8 @@ public class RowSpawner : MonoBehaviour {
 		row11.leftSide = false;
 		row11.desiredSpeed = 1.2f;
 		row11.spawnDelay = 1.8f;
-		
+		row11.SpawnSpecialItem(CashMoney, 10);
+		row11.timesSpawned = 5;
 		obstacleInfoList.Add(row11);
 	}
 	
@@ -179,8 +187,12 @@ public class RowSpawner : MonoBehaviour {
 
 				obstacle.GetComponent<Scroller>().speed = info.desiredSpeed * sign;
 				//just werks
-				if(info.submerge && info.timesSpawned % info.submersionFrequency == 0){
+				if(info.submersionFrequency > 0 && info.timesSpawned % info.submersionFrequency == 0){
 					obstacle.AddComponent<Submerge>();
+				}
+				if(info.specialItemFrequency > 0 && info.timesSpawned % info.specialItemFrequency == 0){
+					GameObject specialItem = Instantiate (info.specialItem, position, Quaternion.identity) as GameObject;
+					specialItem.transform.parent = obstacle.transform;
 				}
 			}
 		}

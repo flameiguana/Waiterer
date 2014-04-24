@@ -152,7 +152,10 @@ public class PlayerController : MonoBehaviour {
             transform.parent = other.transform;
             hopping = false;
             onPlatform = true;
-        }else {
+        }else if(other.gameObject.tag == "Bonus"){
+			Destroy(other.gameObject);
+			GameState.state.Score += 20;
+		}else {
 			inWaterFrames = 0;
 		}
 	}
