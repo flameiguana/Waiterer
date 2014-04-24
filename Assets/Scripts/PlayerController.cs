@@ -154,7 +154,7 @@ public class PlayerController : MonoBehaviour {
             onPlatform = true;
         }else if(other.gameObject.tag == "Bonus"){
 			Destroy(other.gameObject);
-			GameState.state.Score += 20;
+			GameState.state.Score += 200;
 		}else {
 			inWaterFrames = 0;
 		}

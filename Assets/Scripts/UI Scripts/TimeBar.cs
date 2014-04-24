@@ -24,11 +24,12 @@ public class TimeBar : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if(!GameState.state.LevelComplete){
+        if(!GameState.state.LevelComplete && !GameState.state.GameOver){
             time -= Time.deltaTime;
             timeBar.sliderValue = time / levelTimeLimit;
         }else{
             audio.Stop();
+            Destroy(this);
         }
         if(time <=10 && !alarmRung){
             audio.PlayOneShot(alarmSound);

@@ -32,7 +32,7 @@ public class GameState : MonoBehaviour {
         if (_gameOver){
             PauseMenu.pauseMenu.GameOverMenu();
         }else if(_levelComplete){
-            PauseMenu.pauseMenu.GameOverMenu();
+            PauseMenu.pauseMenu.LevelCompleteMenu();
         }
     }
 	void Update () {

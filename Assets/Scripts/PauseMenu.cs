@@ -5,6 +5,7 @@ public class PauseMenu : MonoBehaviour {
     public static PauseMenu pauseMenu;
     private GameObject menuPanel;
     public GameObject resumeButton;
+    public GameObject nextButton;
 
 	public void PauseToggle(){
 		GameState.state.PauseToggle();
@@ -22,12 +23,20 @@ public class PauseMenu : MonoBehaviour {
         menuPanel.SetActive(true);
         resumeButton.SetActive(false);
     }
+    
+    public void LevelCompleteMenu(){
+        menuPanel.SetActive(true);
+        resumeButton.SetActive(false);
+        nextButton.SetActive(true);
+    }
 
 
 	void Start () {
         // grab menu for enabling/disabling
         menuPanel = GameObject.Find("PausePanel");
         resumeButton = GameObject.Find("ResumeButton");
+        nextButton = GameObject.Find("NextButton");
+        nextButton.SetActive(false);
         menuPanel.SetActive(false);
         
         // set singleton menu, maybe expand this to game state later?
