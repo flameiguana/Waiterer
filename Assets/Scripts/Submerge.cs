@@ -21,9 +21,17 @@ public class Submerge : MonoBehaviour {
 			timer = submergeTime;
 			//Switch between full color and fully visible/
 			Color color = spriteRenderer.color;
-			color.a = Mathf.Abs(spriteRenderer.color.a - 1f);
-			spriteRenderer.color = color;
+
+
 			submerged = !submerged;
+			if(submerged){
+				color.a = .3f;
+			}
+			else{
+				color.a = 1f;
+			}
+
+			spriteRenderer.color = color;
 			//collider is enabled if raft is not submerged.
 			collider2D.enabled = !submerged;
 		}
