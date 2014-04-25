@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour {
     public AudioClip crashDishes;
     public AudioClip splash;
     public AudioClip laughing;
+    public AudioClip cashMoney;
     public List<GameObject> foodDelivered = new List<GameObject>();
     
     public bool onPlatform = false;
@@ -153,6 +154,7 @@ public class PlayerController : MonoBehaviour {
             hopping = false;
             onPlatform = true;
         }else if(other.gameObject.tag == "Bonus"){
+            audio.PlayOneShot(cashMoney);
 			Destroy(other.gameObject);
 			GameState.state.Score += 200;
 		}else {
