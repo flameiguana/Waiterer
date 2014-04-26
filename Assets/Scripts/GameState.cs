@@ -13,7 +13,7 @@ public class GameState : MonoBehaviour {
     
     private bool _paused;
     private int _lives = STARTING_LIVES;
-    private float _score = 0;
+    private float _score = 0.00f;
     private int _customersServed = 0;
     private bool _gameOver = false;
     private bool _levelComplete = false;
@@ -99,7 +99,6 @@ public class GameState : MonoBehaviour {
             _score += TimeBar.timer.calculateScore ();
             audio.PlayOneShot(levelComplete);
             _levelComplete = true;
-            _customersServed = 0;
         }else{
             audio.PlayOneShot(happyCustomer);
         }
@@ -108,5 +107,13 @@ public class GameState : MonoBehaviour {
     public void TimeOut(){
         audio.PlayOneShot(gameOver);
         _gameOver = true;
+    }
+    public void ResetGameState(){
+        _customersServed = 0;
+        _gameOver = false;
+        _levelComplete = false;
+        _lives = STARTING_LIVES;
+        _paused = false;
+        _score = 0.00f;
     }
 }

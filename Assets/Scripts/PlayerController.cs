@@ -90,8 +90,6 @@ public class PlayerController : MonoBehaviour {
 				transform.localPosition = Vector3.Lerp(transform.localPosition, targetPosition, speed * Time.deltaTime);
             } else {
                 // stop hopping to allow for a new move to be made
-                //animator.Stop();
-                //animator.speed = 0;
 				transform.localPosition = targetPosition;
                 hopping = false;
 				onPlatform = false;

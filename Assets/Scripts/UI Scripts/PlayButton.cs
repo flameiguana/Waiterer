@@ -7,6 +7,7 @@ public class PlayButton : MonoBehaviour {
     
 	void OnPress(){
 		Application.LoadLevel(level);
+        GameState.state.ResetGameState();
         Time.timeScale = 1f;
 	}
 }

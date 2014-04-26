@@ -8,6 +8,6 @@ public class NextLevelButton : MonoBehaviour {
 	void OnPress(){
 		Application.LoadLevel(nextLevel);
         Time.timeScale = 1f;
-        GameState.state.LevelComplete = false;
+        GameState.state.ResetGameState();
 	}
 }
