@@ -41,7 +41,7 @@ public class PauseMenu : MonoBehaviour {
         
         // set singleton menu, maybe expand this to game state later?
         if(pauseMenu != null) {
-            Debug.LogError("There can never be two pause menus... Something went terribly wrong");
+            //Debug.LogError("There can never be two pause menus... Something went terribly wrong");
             return;
         }
         pauseMenu = this;

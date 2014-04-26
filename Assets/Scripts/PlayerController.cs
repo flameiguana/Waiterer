@@ -34,11 +34,14 @@ public class PlayerController : MonoBehaviour {
     public int dollars;
     public int change;
     
+    private Animator animator;
+    
 
 	// Use this for initialization
 	void Start () {
         lastHeightReached = transform.position.y;
 		transform.localPosition = startPoint.localPosition;
+        animator = this.GetComponent<Animator>();
 	}
 	Vector3 targetPosition;
 	// Update is called once per frame
@@ -50,15 +53,19 @@ public class PlayerController : MonoBehaviour {
 			targetDisplacement = Vector3.zero;
             if(Input.GetKeyDown(KeyCode.W)){
                 targetDisplacement.y = hopDistance;
+                animator.SetInteger("Direction",2);
                 hopping =true;
             }else if (Input.GetKeyDown(KeyCode.A)){
                 targetDisplacement.x = -hopDistance;
+                animator.SetInteger("Direction",1);
                 hopping = true;
             }else if (Input.GetKeyDown(KeyCode.S)){
                 targetDisplacement.y = -hopDistance;
+                animator.SetInteger("Direction",0);
                 hopping = true;
             }else if (Input.GetKeyDown(KeyCode.D)){
                 targetDisplacement.x = hopDistance;
+                animator.SetInteger("Direction",3);
                 hopping = true;
             }
             if(hopping){
@@ -83,6 +90,8 @@ public class PlayerController : MonoBehaviour {
 				transform.localPosition = Vector3.Lerp(transform.localPosition, targetPosition, speed * Time.deltaTime);
             } else {
                 // stop hopping to allow for a new move to be made
+                //animator.Stop();
+                //animator.speed = 0;
 				transform.localPosition = targetPosition;
                 hopping = false;
 				onPlatform = false;
