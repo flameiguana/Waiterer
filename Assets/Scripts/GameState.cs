@@ -17,6 +17,7 @@ public class GameState : MonoBehaviour {
     private int _customersServed = 0;
     private bool _gameOver = false;
     private bool _levelComplete = false;
+    private int _level = 0;
 
 
 	void Start () {  
@@ -26,12 +27,18 @@ public class GameState : MonoBehaviour {
         }
         state = this;
         _paused = false;
+        _levelComplete = false;
 	}
+    
+    void Awake(){
+        DontDestroyOnLoad(transform.gameObject);
+    }
 
     public void OnGUI() { 
         if (_gameOver){
             PauseMenu.pauseMenu.GameOverMenu();
         }else if(_levelComplete){
+            _level++;
             PauseMenu.pauseMenu.LevelCompleteMenu();
         }
     }
@@ -73,6 +80,11 @@ public class GameState : MonoBehaviour {
         set { _lives = value; }
     }
     
+    public int Level
+    {
+        get { return _level; }
+        set { _level = value; }
+    }
     public void WaitererFell(){
         _lives--;
         if (_lives == 0){
@@ -87,6 +99,7 @@ public class GameState : MonoBehaviour {
             _score += TimeBar.timer.calculateScore ();
             audio.PlayOneShot(levelComplete);
             _levelComplete = true;
+            _customersServed = 0;
         }else{
             audio.PlayOneShot(happyCustomer);
         }

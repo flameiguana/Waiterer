@@ -269,7 +269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3ce4ea13b21c9e478a1b2d88581abe7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: Game
+  level: GerardosLevel
 --- !u!114 &91317412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -436,6 +436,10 @@ Prefab:
     - target: {fileID: 400000, guid: d7f1df581f9d08043b7ac63e2f7688d3, type: 2}
       propertyPath: m_LocalRotation.w
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: d7f1df581f9d08043b7ac63e2f7688d3, type: 2}
+      propertyPath: gameLevel
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d7f1df581f9d08043b7ac63e2f7688d3, type: 2}
@@ -1260,17 +1264,17 @@ MonoBehaviour:
   widgetsAreStatic: 0
   cullWhileDragging: 0
   worldToLocal:
-    e00: 320
+    e00: 192.5
     e01: 0
     e02: 0
-    e03: .30078122
+    e03: .999628961
     e10: 0
-    e11: 320
+    e11: 192.5
     e12: 0
-    e13: -.30078125
+    e13: 0
     e20: 0
     e21: 0
-    e22: 320
+    e22: 192.5
     e23: 0
     e30: 0
     e31: 0
@@ -1318,31 +1322,35 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: 41d36e7ab22872b45999ed79d4394a27, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -.30078122
+      value: -.999628961
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: 41d36e7ab22872b45999ed79d4394a27, type: 2}
       propertyPath: m_LocalPosition.y
-      value: .30078125
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400008, guid: 41d36e7ab22872b45999ed79d4394a27, type: 2}
       propertyPath: m_LocalScale.x
-      value: .00312500005
+      value: .0051948051
       objectReference: {fileID: 0}
     - target: {fileID: 400008, guid: 41d36e7ab22872b45999ed79d4394a27, type: 2}
       propertyPath: m_LocalScale.y
-      value: .00312500005
+      value: .0051948051
       objectReference: {fileID: 0}
     - target: {fileID: 400008, guid: 41d36e7ab22872b45999ed79d4394a27, type: 2}
       propertyPath: m_LocalScale.z
-      value: .00312500005
+      value: .0051948051
       objectReference: {fileID: 0}
     - target: {fileID: 11400016, guid: 41d36e7ab22872b45999ed79d4394a27, type: 2}
       propertyPath: nextLevel
-      value: AndrewsLevel
+      value: Game
+      objectReference: {fileID: 0}
+    - target: {fileID: 100010, guid: 41d36e7ab22872b45999ed79d4394a27, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11400034, guid: 41d36e7ab22872b45999ed79d4394a27, type: 2}
       propertyPath: level
-      value: Game
+      value: GerardosLevel
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 41d36e7ab22872b45999ed79d4394a27, type: 2}
@@ -2015,7 +2023,7 @@ Transform:
   m_PrefabInternal: {fileID: 622561212}
   m_GameObject: {fileID: 808707479}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.30078122, y: .30078125, z: 0}
+  m_LocalPosition: {x: -.999628961, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 555839153}
@@ -2238,17 +2246,17 @@ MonoBehaviour:
   widgetsAreStatic: 0
   cullWhileDragging: 0
   worldToLocal:
-    e00: 320
+    e00: 192.5
     e01: 0
     e02: 0
-    e03: -7.62921858
+    e03: -6.93037081
     e10: 0
-    e11: 320
+    e11: 192.5
     e12: 0
-    e13: 69.4992218
+    e13: 69.8000031
     e20: 0
     e21: 0
-    e22: 320
+    e22: 192.5
     e23: 0
     e30: 0
     e31: 0
@@ -2286,7 +2294,7 @@ Transform:
   m_GameObject: {fileID: 1016325030}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: .00312500005, y: .00312500005, z: .00312500005}
+  m_LocalScale: {x: .0051948051, y: .0051948051, z: .0051948051}
   m_Children:
   - {fileID: 236005472}
   - {fileID: 1952734417}
@@ -2327,17 +2335,17 @@ MonoBehaviour:
   widgetsAreStatic: 0
   cullWhileDragging: 0
   worldToLocal:
-    e00: 320
+    e00: 192.5
     e01: 0
     e02: 0
     e03: 0
     e10: 0
-    e11: 320
+    e11: 192.5
     e12: 0
     e13: 0
     e20: 0
     e21: 0
-    e22: 320
+    e22: 192.5
     e23: 0
     e30: 0
     e31: 0
@@ -2611,7 +2619,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61dbc9de75c2d37438444024193c4f58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextLevel: AndrewsLevel
+  nextLevel: Game
 --- !u!4 &1134619499
 Transform:
   m_ObjectHideFlags: 0
@@ -2782,7 +2790,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e672e46a98c5594d80d4236a2e76d45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameLevel: 0
+  gameLevel: 3
   unit: {fileID: 100000, guid: 80255767b43710740a4e9199f643af66, type: 2}
   stripEnemyPrefab: {fileID: 100000, guid: 12f5c71842133a2498bec781586de0c8, type: 2}
   stripEnemyLeftPrefab: {fileID: 100000, guid: 45f2662c6e5e4c54da91158dc69fd540, type: 2}
