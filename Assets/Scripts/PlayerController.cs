@@ -143,18 +143,18 @@ public class PlayerController : MonoBehaviour {
     }
     // Check for any collisions
      void OnTriggerEnter2D(Collider2D other) {
-        if (other.gameObject.tag == "Finish"){ //create a new waiter at the starting point
-            //GameObject newWaiterer = (GameObject)Instantiate(waiterPrefab, transform.position, transform.rotation);
-            GameObject deliveredFood = (GameObject)Instantiate(foodDelivered[Random.Range(0, foodDelivered.Count -1)], transform.position, transform.rotation);
-            resetWaiter();
-            GameState.state.Score += 100;
-            GameState.state.CustomerServed();   
-        }else if (other.gameObject.tag == "Obstacle"){
+        if (other.gameObject.tag == "Obstacle"){
             resetWaiter();
             audio.PlayOneShot(crashWhistle);
             audio.PlayOneShot(crashDishes);
             audio.PlayOneShot(laughing);
             GameState.state.WaitererFell();
+        }else if (other.gameObject.tag == "Finish"){ //create a new waiter at the starting point
+            //GameObject newWaiterer = (GameObject)Instantiate(waiterPrefab, transform.position, transform.rotation);
+            GameObject deliveredFood = (GameObject)Instantiate(foodDelivered[Random.Range(0, foodDelivered.Count -1)], transform.position, transform.rotation);
+            resetWaiter();
+            GameState.state.Score += 100;
+            GameState.state.CustomerServed();   
         }else if (other.gameObject.tag == "Platform" && !hopping){
 			inWaterFrames = 0;
             transform.parent = other.transform;
