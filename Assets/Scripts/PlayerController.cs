@@ -171,7 +171,14 @@ public class PlayerController : MonoBehaviour {
 
 	//Can't rely on trigger enter because it may miss the point where it enters.
 	void OnTriggerStay2D(Collider2D other){
-		if (other.gameObject.tag == "Platform" && !hopping){
+		if (other.gameObject.tag == "Obstacle"){
+			resetWaiter();
+			audio.PlayOneShot(crashWhistle);
+			audio.PlayOneShot(crashDishes);
+			audio.PlayOneShot(laughing);
+			GameState.state.WaitererFell();
+		}
+		else if (other.gameObject.tag == "Platform" && !hopping){
 			inWaterFrames = 0;
 			onPlatform = true;
 		}
