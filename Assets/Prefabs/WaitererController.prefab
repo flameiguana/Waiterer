@@ -30,6 +30,7 @@ GameObject:
   - 82: {fileID: 8200000}
   - 95: {fileID: 9500000}
   - 95: {fileID: 9500002}
+  - 95: {fileID: 9500004}
   m_Layer: 0
   m_Name: waiter
   m_TagString: Untagged
@@ -186,6 +187,20 @@ Animator:
   m_AnimatePhysics: 0
   m_HasTransformHierarchy: 1
 --- !u!95 &9500002
+Animator:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100002}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5630a693e04cf05448cc686a10361066, type: 2}
+  m_CullingMode: 0
+  m_ApplyRootMotion: 1
+  m_AnimatePhysics: 0
+  m_HasTransformHierarchy: 1
+--- !u!95 &9500004
 Animator:
   serializedVersion: 2
   m_ObjectHideFlags: 1
