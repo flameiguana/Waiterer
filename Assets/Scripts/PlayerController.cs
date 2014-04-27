@@ -49,6 +49,15 @@ public class PlayerController : MonoBehaviour {
         if(GameState.state.GameOver){
             Destroy(this);
         }
+		//instead of using colliders to check for out of bounds, use positoin
+		if((Mathf.Abs(transform.position.x) > 2.82f)){
+			resetWaiter();
+			audio.PlayOneShot(crashWhistle);
+			audio.PlayOneShot(crashDishes);
+			audio.PlayOneShot(laughing);
+			GameState.state.WaitererFell();
+		}
+
         if(!hopping){ //
 			targetDisplacement = Vector3.zero;
             if(Input.GetKeyDown(KeyCode.W)){
@@ -78,6 +87,7 @@ public class PlayerController : MonoBehaviour {
 			Vector3 worldPosition = transform.position + targetDisplacement;
 			if((Mathf.Abs(worldPosition.x) > 2.8f) || worldPosition.y < -2.8f){
                 //reset the target and don't hop
+				//transform.parent = null;
 				targetPosition = transform.localPosition;
                 targetDisplacement = Vector3.zero;
                 hopping = false;
