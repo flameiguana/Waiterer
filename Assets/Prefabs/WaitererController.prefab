@@ -29,6 +29,7 @@ GameObject:
   - 61: {fileID: 6100000}
   - 82: {fileID: 8200000}
   - 95: {fileID: 9500000}
+  - 95: {fileID: 9500002}
   m_Layer: 0
   m_Name: waiter
   m_TagString: Untagged
@@ -118,7 +119,7 @@ AudioSource:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
@@ -180,6 +181,20 @@ Animator:
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 576c70109c4c5cc4e929c01bc0ebcb1b, type: 2}
+  m_CullingMode: 0
+  m_ApplyRootMotion: 1
+  m_AnimatePhysics: 0
+  m_HasTransformHierarchy: 1
+--- !u!95 &9500002
+Animator:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100002}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5630a693e04cf05448cc686a10361066, type: 2}
   m_CullingMode: 0
   m_ApplyRootMotion: 1
   m_AnimatePhysics: 0
@@ -353,7 +368,7 @@ SpriteRenderer:
   m_SortingLayer: 3
   m_SortingOrder: 0
   m_SortingLayerID: 2093184853
-  m_Sprite: {fileID: 21300048, guid: e6894fb6ba91284459c58f1d1619fc51, type: 3}
+  m_Sprite: {fileID: 21300008, guid: d9ab09bc72874304ab64b1c220ed6191, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:

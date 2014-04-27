@@ -166,50 +166,79 @@ public class RowSpawner : MonoBehaviour {
                 
                 break;
             case 1:
-                ObstacleInfo rowOne2 = new ObstacleInfo(stripEnemyPrefab, 1);
-                rowOne2.leftSide = true;
-                rowOne2.desiredSpeed = 2f;
-                rowOne2.spawnDelay = 4f;
+                ObstacleInfo row1 = new ObstacleInfo(twoUnitEnemyPrefab, 1);
+                row1.leftSide = true;
+                row1.desiredSpeed = 2f;
+                row1.spawnDelay = 3f;
 
-                obstacleInfoList.Add(rowOne2);
+                obstacleInfoList.Add(row1);
+                
+                ObstacleInfo row2 = new ObstacleInfo(stripEnemyLeftPrefab, 2);
+                row2.leftSide = false;
+                row2.desiredSpeed = 1f;
+                row2.spawnDelay = 4f;
+
+                obstacleInfoList.Add(row2);
+                
+                ObstacleInfo row3 = new ObstacleInfo(stripEnemyPrefab, 3);
+                row3.leftSide = true;
+                row3.desiredSpeed = 1f;
+                row3.spawnDelay = 4f;
+
+                obstacleInfoList.Add(row3);
+                
+                ObstacleInfo row4 = new ObstacleInfo(twoUnitEnemyPrefab, 4);
+                row4.leftSide = true;
+                row4.desiredSpeed = 2f;
+                row4.spawnDelay = 1.5f;
+
+                obstacleInfoList.Add(row4);
+                
+                ObstacleInfo row5 = new ObstacleInfo(stripEnemyLeftPrefab, 5);
+                row5.leftSide = false;
+                row5.desiredSpeed = 1.5f;
+                row5.spawnDelay = 3f;
+
+                obstacleInfoList.Add(row5);
                 //Note rows 7 through 11 should spawn platforms
-                ObstacleInfo row72 = new ObstacleInfo(stripPlatformPrefab, 7);
-                row72.leftSide = true;
-                row72.desiredSpeed = 1.2f;
-                row72.spawnDelay = 1.5f;
-                row72.EnableSubmersion(3);
+                ObstacleInfo rowSeven = new ObstacleInfo(sixUnitPlatformPrefab, 7);
+                rowSeven.leftSide = true;
+                rowSeven.desiredSpeed = 2f;
+                rowSeven.spawnDelay = 2f;
+                rowSeven.SpawnSpecialItem(CashMoney, 3);
                 
-                obstacleInfoList.Add(row72);
+                obstacleInfoList.Add(rowSeven);
                 
-                ObstacleInfo row82 = new ObstacleInfo(stripPlatformPrefab, 8);
-                row82.leftSide = false;
-                row82.desiredSpeed = 1.2f;
-                row82.spawnDelay = 3f;
-                row82.SpawnSpecialItem(CashMoney, 8);
+                ObstacleInfo rowEight = new ObstacleInfo(stripPlatformPrefab, 8);
+                rowEight.leftSide = false;
+                rowEight.desiredSpeed = 1.2f;
+                rowEight.spawnDelay = 1.5f;
+                rowEight.EnableSubmersion(2);
                 
-                obstacleInfoList.Add(row82);
+                obstacleInfoList.Add(rowEight);
                 
-                ObstacleInfo row92 = new ObstacleInfo(sixUnitPlatformPrefab, 9);
-                row92.leftSide = false;
-                row92.desiredSpeed = 2f;
-                row92.spawnDelay = 2f;
+                ObstacleInfo rowNine = new ObstacleInfo(sixUnitPlatformPrefab, 9);
+                rowNine.leftSide = false;
+                rowNine.desiredSpeed = 2f;
+                rowNine.spawnDelay = 2f;
                 
-                obstacleInfoList.Add(row92);
+                obstacleInfoList.Add(rowNine);
                 
-                ObstacleInfo row102 = new ObstacleInfo(twoUnitPlatformPrefab, 10);
-                row102.leftSide = true;
-                row102.desiredSpeed = 1.2f;
-                row102.spawnDelay = 1.2f;
+                ObstacleInfo rowTen = new ObstacleInfo(stripPlatformPrefab, 10);
+                rowTen.leftSide = true;
+                rowTen.desiredSpeed = 1.2f;
+                rowTen.spawnDelay = 1.2f;
+                rowTen.EnableSubmersion(3);
                 
-                obstacleInfoList.Add(row102);
+                obstacleInfoList.Add(rowTen);
                 
-                ObstacleInfo row112 = new ObstacleInfo(stripPlatformPrefab, 11);
-                row112.leftSide = false;
-                row112.desiredSpeed = 1.2f;
-                row112.spawnDelay = 1.8f;
-                row112.SpawnSpecialItem(CashMoney, 10);
-                row112.timesSpawned = 5;
-                obstacleInfoList.Add(row112);
+                ObstacleInfo rowEleven = new ObstacleInfo(twoUnitPlatformPrefab, 11);
+                rowEleven.leftSide = false;
+                rowEleven.desiredSpeed = 1.2f;
+                rowEleven.spawnDelay = 1.2f;
+                rowEleven.SpawnSpecialItem(CashMoney, 10);
+                rowEleven.timesSpawned = 5;
+                obstacleInfoList.Add(rowEleven);
                 break;
             default:
                 ObstacleInfo rowOne3 = new ObstacleInfo(stripEnemyPrefab, 1);
