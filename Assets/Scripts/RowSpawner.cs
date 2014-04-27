@@ -29,7 +29,7 @@ public class RowSpawner : MonoBehaviour {
 		public int timesSpawned = 0;
 
 		public int submersionFrequency = 0;
-
+		public float submergeTime = 0f;
 		public int specialItemFrequency = 0;
 		public GameObject specialItem;
 
@@ -47,8 +47,9 @@ public class RowSpawner : MonoBehaviour {
 			timeLeft = spawnDelay;
 		}
 
-		public void EnableSubmersion(int frequency){
+		public void EnableSubmersion(int frequency, float submergeTime = 1.5f){
 			submersionFrequency = frequency;
+			this.submergeTime = submergeTime;
 		}
 
 		public void SpawnSpecialItem(GameObject item, int frequency){
@@ -253,41 +254,67 @@ public class RowSpawner : MonoBehaviour {
 				rowOne.spawnDelay = 4f;
 
 				obstacleInfoList.Add(rowOne);
+
+				ObstacleInfo rowTwo = new ObstacleInfo(stripEnemyLeftPrefab, 2);
+				rowTwo.leftSide = false;
+				rowTwo.desiredSpeed = 1.6f;
+				rowTwo.spawnDelay = 3f;
+				
+				obstacleInfoList.Add(rowTwo);
+				
+				ObstacleInfo rowThree = new ObstacleInfo(stripEnemyPrefab, 3);
+				rowThree.leftSide = true;
+				rowThree.desiredSpeed = 1f;
+				rowThree.spawnDelay = 4f;
+				
+				obstacleInfoList.Add(rowThree);
+				
+				ObstacleInfo rowFour = new ObstacleInfo(twoUnitEnemyPrefab, 4);
+				rowFour.leftSide = true;
+				rowFour.desiredSpeed = 3.5f;
+				rowFour.spawnDelay = .8f;
+				
+				obstacleInfoList.Add(rowFour);
+				
+				ObstacleInfo rowFive = new ObstacleInfo(stripEnemyLeftPrefab, 5);
+				rowFive.leftSide = false;
+				rowFive.desiredSpeed = 1.5f;
+				rowFive.spawnDelay = 3f;
+				obstacleInfoList.Add(rowFive);
                 
                 //Note rows 7 through 11 should spawn platforms
                 ObstacleInfo rowSeven = new ObstacleInfo(stripPlatformPrefab, 7);
 				rowSeven.leftSide = true;
-				rowSeven.desiredSpeed = 1.2f;
-				rowSeven.spawnDelay = 1.5f;
-				rowSeven.EnableSubmersion(3);
-                
+				rowSeven.desiredSpeed = 1.8f;
+				rowSeven.spawnDelay = 2.1f;
+				//rowSeven.EnableSubmersion(3);
 				obstacleInfoList.Add(rowSeven);
                 
                 ObstacleInfo rowEight = new ObstacleInfo(stripPlatformPrefab, 8);
                 rowEight.leftSide = false;
-                rowEight.desiredSpeed = 1.2f;
-                rowEight.spawnDelay = 3f;
-                rowEight.SpawnSpecialItem(CashMoney, 8);
-                
+                rowEight.desiredSpeed = 1.8f;
+                rowEight.spawnDelay = 2.5f;
+                rowEight.SpawnSpecialItem(CashMoney, 10);
+				rowEight.timesSpawned = 8;
                 obstacleInfoList.Add(rowEight);
                 
                 ObstacleInfo rowNine = new ObstacleInfo(sixUnitPlatformPrefab, 9);
                 rowNine.leftSide = false;
-                rowNine.desiredSpeed = 2f;
-                rowNine.spawnDelay = 2f;
-                
+                rowNine.desiredSpeed = 2.6f;
+                rowNine.spawnDelay = 1.8f;
+				rowNine.EnableSubmersion(1, 2f);
                 obstacleInfoList.Add(rowNine);
                 
                 ObstacleInfo rowTen = new ObstacleInfo(twoUnitPlatformPrefab, 10);
                 rowTen.leftSide = true;
-                rowTen.desiredSpeed = 1.2f;
-                rowTen.spawnDelay = 1.2f;
+                rowTen.desiredSpeed = 1.8f;
+                rowTen.spawnDelay = 1.6f;
                 
                 obstacleInfoList.Add(rowTen);
                 
                 ObstacleInfo rowEleven = new ObstacleInfo(stripPlatformPrefab, 11);
                 rowEleven.leftSide = false;
-                rowEleven.desiredSpeed = 1.2f;
+                rowEleven.desiredSpeed = 1.4f;
                 rowEleven.spawnDelay = 1.8f;
                 rowEleven.SpawnSpecialItem(CashMoney, 10);
                 rowEleven.timesSpawned = 5;
@@ -324,7 +351,7 @@ public class RowSpawner : MonoBehaviour {
 				obstacle.GetComponent<Scroller>().speed = info.desiredSpeed * sign;
 				//just werks
 				if(info.submersionFrequency > 0 && info.timesSpawned % info.submersionFrequency == 0){
-					obstacle.AddComponent<Submerge>();
+					obstacle.AddComponent<Submerge>().submergeTime = info.submergeTime;
 				}
 				if(info.specialItemFrequency > 0 && info.timesSpawned % info.specialItemFrequency == 0){
 					GameObject specialItem = Instantiate (info.specialItem, position, Quaternion.identity) as GameObject;
