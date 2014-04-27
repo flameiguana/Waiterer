@@ -238,7 +238,7 @@ public class RowSpawner : MonoBehaviour {
                 
                 ObstacleInfo rowEleven = new ObstacleInfo(twoUnitPlatformPrefab, 11);
                 rowEleven.leftSide = false;
-                rowEleven.desiredSpeed = 1.2f;
+                rowEleven.desiredSpeed = 1.3f;
                 rowEleven.spawnDelay = 1.2f;
                 rowEleven.SpawnSpecialItem(CashMoney, 10);
                 rowEleven.timesSpawned = 5;

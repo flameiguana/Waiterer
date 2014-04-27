@@ -23,9 +23,9 @@ public class Submerge : MonoBehaviour {
 		if(timer <= .35f && !warned && !submerged){
 			warned = true;
 			Color color = originalColor;
-			color.g = .1f;	
-			color.r = .5f;
-			color.b = .1f;
+			color.g =  0f;	
+			color.r = 1f;
+			color.b = 0f;
 
 			spriteRenderer.color = color;
 		}
