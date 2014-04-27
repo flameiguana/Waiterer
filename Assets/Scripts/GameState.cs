@@ -23,6 +23,7 @@ public class GameState : MonoBehaviour {
 	void Start () {  
         if(state != null) {
             Debug.LogError("There can never be two pause menus... Something went terribly wrong");
+			Destroy(this.gameObject);
             return;
         }
         state = this;
